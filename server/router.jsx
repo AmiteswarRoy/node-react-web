@@ -53,20 +53,19 @@ export default async function (ctx) {
   }
 
   try {
-    //!excluded
-    if (false) {
+    if (!excluded) {
       // check for valid accessToken
-      await UserSource.getEntitlements({ accessToken, interfaceLanguage })
+      /* await UserSource.getEntitlements({ accessToken, interfaceLanguage })
         .then((res) => {
           entitlementsResponse = res;
         })
         .catch((err) => {
           entitlementsResponse = err;
           return err;
-        });
+        }); */
 
-      debug('dev')(entitlementsResponse);
-      const proceedWithRequest = (entitlementsResponse && !entitlementsResponse.code);
+      //debug('dev')(entitlementsResponse);
+      const proceedWithRequest = true;//(entitlementsResponse && !entitlementsResponse.code);
 
       debug('dev')(`proceed: ${proceedWithRequest}`);
       debug('dev')(`${ctx.request.host}`);
@@ -85,15 +84,6 @@ export default async function (ctx) {
         );
         return;
       }
-    }else{
-      const protocol = ctx.request.headers['x-forwarded-proto'] || 'http';
-      const port = parseInt(process.env.PORT, 10) + 2 || 3002;
-      const host = NODE_ENV === 'development' ?
-                     `${serverInfo.HOST}:${port}` :
-                     `${ctx.request.host}`;
-      const redirectUrl = `${protocol}://${host}`;
-      debug('dev')(`redirectUrl: ${redirectUrl}`);
-      ctx.redirect(`${redirectUrl}/showcase`)
     }
 
     // Populate store with locale
