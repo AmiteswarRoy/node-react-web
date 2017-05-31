@@ -1,0 +1,27 @@
+@import './_variables';
+
+.reset-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.un-select {
+  user-select: none;
+}
+
+.breakpoint-16 {
+  background-color:  var(--grey-darker)
+}
+
+.breakpoint-12 {
+  background-color:  var(--grey-dark)
+}
+
+.breakpoint-8 {
+  background-color:  var(--grey)
+}
+
+.breakpoint-4 {
+  background-color:  var(--grey-light)
+}

@@ -1,1 +1,3 @@
-# node-react-web
+To Run 
+
+npm run dev
