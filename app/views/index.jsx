@@ -2,16 +2,20 @@
 import React, { Component } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import connect from 'connect-alt';
-import SiteHeader from 'components/header/';
+import SiteHeader from 'tradecomponents/header/';
+import ReactI13nTealium from 'i13n/tealium/index';
+import { setupI13n } from 'react-i13n';
 import { Grid } from 'react-cellblock';
+import settingsProvider from 'utils/settings-provider';
 import styles from 'styles/app.css';
 import classNames from 'classnames/bind';
 import debug from 'debug';
 import get from 'lodash/get';
 import debounce from 'lodash/debounce';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import { Sticky } from 'components/shared';
 import injectContext from 'decorators/inject-context';
-import { Link } from 'react-router';
+import 'styles/app.global.css';
 
 injectTapEventPlugin();
 
@@ -80,12 +84,14 @@ class App extends Component {
 
     return (
       <Grid
-        columnWidth={ 60 }
+        columnWidth={ 60 }            // a “grid unit” is at least 60px wide
         initialBreakpoint={ initialBreakpoint }
         onChange={ this.onChange }
         flexible={ [ 4, 8, 12, 16 ] }
         className='react-cellblock'>
-        <SiteHeader entitled={ !!entitlements } />
+        <Sticky cssStyles={ { zIndex: 3, top: 0 } }>
+          <SiteHeader entitled={ !!entitlements } />
+        </Sticky>
         <ReactCSSTransitionGroup
           component='div'
           transitionName='reversePageSwap'
@@ -96,10 +102,6 @@ class App extends Component {
             className={ cx('body', `breakpoint-${initialBreakpoint || 16}`) }
             style={ bodyStyle }>
             { clonedChildren() }
-            <ul>
-              <li><Link to='/upload'>Upload</Link></li>
-              <li><Link to='/search'>Search</Link></li>
-            </ul>
           </div>
         </ReactCSSTransitionGroup>
       </Grid>
@@ -108,4 +110,6 @@ class App extends Component {
 
 }
 
-export default App;
+export default (settingsProvider.get('i13N.ENABLED')) ?
+                setupI13n(App, {}, [ reactI13nTealium.getPlugin() ]) :
+                App;

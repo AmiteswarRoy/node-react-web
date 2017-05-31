@@ -11,17 +11,17 @@
 }
 
 .breakpoint-16 {
-  background-color:  var(--grey-darker)
+  padding: 10px;
 }
 
 .breakpoint-12 {
-  background-color:  var(--grey-dark)
+  
 }
 
 .breakpoint-8 {
-  background-color:  var(--grey)
+ 
 }
 
 .breakpoint-4 {
-  background-color:  var(--grey-light)
+  
 }

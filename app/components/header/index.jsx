@@ -16,7 +16,7 @@ class SiteHeader extends Component {
   };
 
   _renderTop = () => {
-    const header = 'Risk and Trade Complaince';
+    const header = 'RISK CENTER | TRADE COMPILANCE';
     return (
       <Row className={ cx('top', 'clearfix') }>
         <div className={ cx('top-left', 'clearfix') }>

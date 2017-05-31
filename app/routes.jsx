@@ -8,11 +8,7 @@ export default function () { /* eslint react/display-name: 0 */
   return (
     <Route component={ require('./views/trade/') }>
       { generateRoute({
-        paths: [ '/' ],
-        component: require('./views/trade/')
-      }) }
-      { generateRoute({
-        paths: [ '/upload' ],
+        paths: [ '/upload', '/api/users' ],
         component: require('./views/trade/upload')
       }) }
       <Route path='*' component={ require('./views/not-found') } />

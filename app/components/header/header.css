@@ -2,14 +2,14 @@
 
 /* Header Base */
 .component {
-  background-color: var(--blue);
+  padding: 12px;
+  background-color: #3aa6d1;
 }
 
 .top {
-  background: var(--charc);
-  padding: 8px 58px 8px 10px;
-  min-height: 36px;
-
+  min-height: 24px;
+  color: #ffffff;
+  font-size: 18px;
   & .top-left {
     float: left;
     min-height: 1px;

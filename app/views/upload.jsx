@@ -44,11 +44,15 @@ class UploadPage extends Component {
   render() {
     return (
       <div className='container'>
-        <h1>Uploading Search Input records</h1>
-        <form className='uploader' encType='multipart/form-data' >
-          <input type='file' name='file' className='upload-file' onChange={ this.handleFile } />
-          <input type='button' value='Upload' onClick={ this.handleSubmit } />
-        </form>
+        <center>
+          <h1>Upload - Search Records</h1>
+          <br />
+          <br />
+          <form className='uploader' encType='multipart/form-data' >
+            <input type='file' name='file' className='upload-file' onChange={ this.handleFile } />
+            <input type='button' value='Upload' onClick={ this.handleSubmit } />
+          </form>
+        </center>
       </div>
     );
   }
